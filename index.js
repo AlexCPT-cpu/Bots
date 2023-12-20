@@ -1,11 +1,6 @@
 import { Telegraf } from "telegraf";
-import Moralis from "moralis";
 import axios from "axios";
 
-await Moralis.start({
-  apiKey:
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub25jZSI6Ijc0NjJkOTA1LTMzZDgtNGMxYy05ODJkLThkYmZmYmZkMDc4OSIsIm9yZ0lkIjoiODkxMzYiLCJ1c2VySWQiOiI4ODc3OCIsInR5cGVJZCI6IjRhYThmZTMwLWY0YWMtNDdhYS05YzdlLTc2ZTI4MmMzZDMzMyIsInR5cGUiOiJQUk9KRUNUIiwiaWF0IjoxNjgzMTcxMTQyLCJleHAiOjQ4Mzg5MzExNDJ9.Q0HfaFYwVARrK_oKRxZIumVAHPm5A8PylGxikZVQ_7Y",
-});
 const token = "6845451327:AAFA7RAmhygELWhENC39Y-k7YA8HqKKEB6o";
 const bot = new Telegraf(token);
 
