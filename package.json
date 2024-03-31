@@ -6,6 +6,8 @@
   "dependencies": {
     "@moralisweb3/common-evm-utils": "^2.23.2",
     "axios": "^1.6.2",
+    "dotenv": "^16.4.5",
+    "json-stringify-safe": "^5.0.1",
     "moralis": "^2.23.2",
     "node-telegram-bot-api": "^0.64.0",
     "telegraf": "^4.15.3"
