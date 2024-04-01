@@ -56,20 +56,30 @@ const softwareTesterScene = new Scenes.BaseScene("softwareTester");
 
 // Start scene handlers
 startScene.enter((ctx) => {
-  ctx.reply("Select an option!", {
-    reply_markup: {
-      inline_keyboard: [
-        [
-          { text: "Initialize a trade", callback_data: "trade" },
-          { text: "Apply as a web3 freelancer", callback_data: "freelance" },
-        ],
-      ],
+  ctx.replyWithPhoto(
+    {
+      source: "IMG_7627 (1).JPG", // Replace "path_to_your_image.jpg" with the actual path to your image file
     },
-  });
+    {
+      caption:
+        "What can this bot do?\n\nWelcome to Vet Ai Bot!\n\nThe best safety bot on ETH.\n\nFirst Command: /start\n\nThis is the official safety Bot \n\nTelegram: [VetAiERC](https://t.me/VetAiERC) Community before",
+      parse_mode: "Markdown",
+      reply_markup: {
+        inline_keyboard: [
+          [
+            { text: "Initialize a trade", callback_data: "trade" },
+            { text: "Apply as a web3 freelancer", callback_data: "freelance" },
+          ],
+        ],
+      },
+    }
+  );
 });
+
 startScene.action("freelance", (ctx) => {
   ctx.scene.enter("freelance");
 });
+
 startScene.action("trade", (ctx) => {
   ctx.scene.enter("tradeScreens");
 });
