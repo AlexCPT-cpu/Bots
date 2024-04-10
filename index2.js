@@ -1,7 +1,9 @@
 import { Telegraf, Scenes, session } from "telegraf";
 import fs from "fs";
-import express from "express";
 import stringify from "json-stringify-safe";
+import express from "express";
+import axios from "axios";
+import path from "path";
 import { config } from "dotenv";
 
 const app = express();
@@ -40,9 +42,7 @@ const state = {
   "Blockchain Engineer": [],
   "Software Tester": [],
 };
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/index.html"));
-});
+
 let data = {};
 try {
   const rawData = fs.readFileSync("data.json");
@@ -50,6 +50,10 @@ try {
 } catch (error) {
   console.error("Error reading data.json:", error);
 }
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/index.html"));
+});
 
 // Create scenes
 const startScene = new Scenes.BaseScene("start");
@@ -467,12 +471,13 @@ bot.use(session());
 bot.use(stage.middleware());
 
 // Command to start the conversation
-bot.command("start", (ctx) => {
-  ctx.scene.enter("start");
-});
+bot.command("start", (ctx) => ctx.scene.enter("start"));
 
 // Start the bot
 bot.launch();
+
+app.use(bot.webhookCallback("/secret-path"));
+bot.telegram.setWebhook("<YOUR_CAPSULE_URL>/secret-path");
 
 app.listen(port, () => console.log(`Listening on ${port}`));
 // Enable graceful stop
