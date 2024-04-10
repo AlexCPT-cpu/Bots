@@ -2,6 +2,7 @@ import { Telegraf, Scenes, session } from "telegraf";
 import fs from "fs";
 import express from "express";
 import stringify from "json-stringify-safe";
+import path from "path";
 import { config } from "dotenv";
 
 const app = express();
